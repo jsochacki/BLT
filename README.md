@@ -1,15 +1,15 @@
 # BLT: a Boundary Limited Text extraction tool
 
-[![Issues](https://img.shields.io/github/issues/davatorium/rofi.svg)](https://github.com/jsochacki/BLT/issues)
-[![Forks](https://img.shields.io/github/forks/davatorium/rofi.svg)](https://github.com/jsochacki/BLT/network)
-[![Stars](https://img.shields.io/github/stars/davatorium/rofi.svg)](https://github.com/jsochacki/BLT/stargazers)
-[![Downloads](https://img.shields.io/github/downloads/davatorium/rofi/total.svg)](https://github.com/jsochacki/BLT/releases)
+[![Issues](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/issues)
+[![Forks](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/network)
+[![Stars](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/stargazers)
+[![Downloads](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/releases)
 
-**BLT** is a C++ based tool that is aimed at performing automatic list creating for cataloging books, videogames, and other objects that have text regions that are separated with clear and srong boundaries.  In order to use BLT one must only take pictures of the items that they want to catalog in their natural state like so
+**BLT** is a C++ based tool that is aimed at performing automatic list creating for cataloging books, videogames, and other objects that have text regions that are separated with clear and srong boundaries.  In order to use BLT one must only take pictures of the items that they want to catalog in their natural state like the following.
 
 ![Image Example](http://www.boston.com/business/innovation/state-of-play/assets_c/2013/12/library5-thumb-599x351-120892.jpg)
 
-and place these in the directory you launch BLT from.  THe result will be held in a .csv file in the same directory.  There are similar things for books out there and there are OCR apps but none that I could find that met this need specifically.
+Once you have one of these or a whole set of these just place these in the directory you launch BLT from and run BLT.  THe result will be held in a .csv file in the same directory.  There are similar things for books out there and there are OCR apps but none that I could find that met this need specifically.
 
 # Theory or operation:
 
