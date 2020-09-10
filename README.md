@@ -1,9 +1,9 @@
 # BLT: a Boundary Limited Text extraction tool
 
-[![Issues](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/issues)
-[![Forks](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/network)
-[![Stars](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/stargazers)
-[![Downloads](https://github.com/jsochacki/No_Good_Music/blob/master/static/images/LNoGood.jpg)](https://github.com/jsochacki/BLT/releases)
+[![Issues]()](https://github.com/jsochacki/BLT/issues)
+[![Forks]()](https://github.com/jsochacki/BLT/network)
+[![Stars]()](https://github.com/jsochacki/BLT/stargazers)
+[![Downloads]()](https://github.com/jsochacki/BLT/releases)
 
 **BLT** is a C++ based tool that is aimed at performing automatic list creating for cataloging books, videogames, and other objects that have text regions that are separated with clear and srong boundaries.  In order to use BLT one must only take pictures of the items that they want to catalog in their natural state like the following.
 
