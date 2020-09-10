@@ -13,12 +13,13 @@ Once you have one of these or a whole set of these just place these in the direc
 
 # Theory or operation:
 
-  1.	Use Canny edge detection from OpenCV(https://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html) to get the edges
-  2.	Draw bounding boxes around each contour https://docs.opencv.org/3.4/da/d0c/tutorial_bounding_rects_circles.html
-  3.	Snap each enclosed area to it’s own image file
-  4.	Use tesseract-ocr https://github.com/tesseract-ocr/tesseract to get the text from each image
+1.	Use Canny edge detection from OpenCV(https://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html) to get the edges
+2.	Draw bounding boxes around each contour https://docs.opencv.org/3.4/da/d0c/tutorial_bounding_rects_circles.html
+3.	Snap each enclosed area to it’s own image file
+4.	Use tesseract-ocr https://github.com/tesseract-ocr/tesseract to get the text from each image
     1.	Take an image and use tesseract, run it for all 4 orientations (base, rot 90, rot 180, rot 270) and save the result with the highest score
-  5.	Write it all to a file using standard library calls
+5.	Write it all to a file using standard library calls
   
-  # Installation
-  Installation is automatically done with the provided .sh script for ubuntu systems
+# Installation
+Installation is automatically done with the provided .sh script for ubuntu systems
+  
