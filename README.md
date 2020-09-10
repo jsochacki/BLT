@@ -17,8 +17,7 @@ Once you have one of these or a whole set of these just place these in the direc
   2.	Draw bounding boxes around each contour https://docs.opencv.org/3.4/da/d0c/tutorial_bounding_rects_circles.html
   3.	Snap each enclosed area to it’s own image file
   4.	Use tesseract-ocr https://github.com/tesseract-ocr/tesseract to get the text from each image
-  
-    a.	Take an image and use tesseract, run it for all 4 orientations (base, rot 90, rot 180, rot 270) and save the result with the highest score
+    1.	Take an image and use tesseract, run it for all 4 orientations (base, rot 90, rot 180, rot 270) and save the result with the highest score
   5.	Write it all to a file using standard library calls
   
   # Installation
