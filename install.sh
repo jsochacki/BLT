@@ -8,7 +8,7 @@ CURHOMEDIR=$(pwd)
 cd $CURDIR
 
 INSTALLDIR=/usr/local/opencv
-mkdir -p $INSTALLDIR
+sudo mkdir -p $INSTALLDIR
 
 ## Install generic/necessary package manager based packages
 # Need git to pull this repo
@@ -23,20 +23,23 @@ sudo apt-get install -y build-essential
 # Required Build Packages
 sudo apt-get install -y cmake libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 # Optional Packages for Additional Features
-sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+sudo apt update
+sudo apt install libjasper1 libjasper-dev
+sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev
 
 # Get OpenCV
-mkdir $INSTALLDIR/opencv_build && cd $INSTALLDIR/opencv_build
-git clone https://github.com/opencv/opencv.git
-git clone https://github.com/opencv/opencv_contrib.git
-git clone https://github.com/opencv/opencv_extra.git
+sudo mkdir $INSTALLDIR/opencv_build && cd $INSTALLDIR/opencv_build
+sudo git clone https://github.com/opencv/opencv.git
+sudo git clone https://github.com/opencv/opencv_contrib.git
+sudo git clone https://github.com/opencv/opencv_extra.git
 
 # Make (see addition cmake options here https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
 cd opencv
-mkdir build && cd build
+sudo mkdir build && cd build
 # Remove -D OPENCV_EXTRA_MODULES_PATH=$INSTALLDIR/opencv_build/opencv_contrib/modules \
 # To get rid of unstable items
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
+sudo cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
     -D INSTALL_C_EXAMPLES=ON \
     -D INSTALL_PYTHON_EXAMPLES=ON \
@@ -46,7 +49,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D BUILD_EXAMPLES=ON ..
 
 # Build
-make -j$(nproc)
+sudo make -j$(nproc)
 
 # Install
 sudo make install
@@ -54,7 +57,7 @@ sudo make install
 # Make the docs
 cd doc/
 #TODO target of doxygen fails
-make -j$(nproc)
+sudo make -j$(nproc)
 
 # Verify
 pkg-config --modversion opencv4
