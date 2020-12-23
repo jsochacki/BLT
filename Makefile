@@ -12,7 +12,7 @@
 # Specify the default target
 .DEFAULT_GOAL	= main
 
-# Baseline values, will be added onto later
+# Baseline values which are added onto
 CPPFLAGS		=
 INCLUDE			=
 
@@ -21,6 +21,9 @@ MAKEFILE		= Makefile
 BUILD_DIR		= build/
 OBJ_DIR			= $(BUILD_DIR)obj/
 TMP				= $(BUILD_DIR)tmp/
+
+# Main Target
+TARGET			= main
 
 #*******************************************************************************
 # Project Locations
@@ -43,6 +46,8 @@ vpath %.c	$(SRC_DIRS)
 #*******************************************************************************
 CCPP			= g++
 ECHO			= @$(GNU)echo
+RM				= $(GNU)rm -f
+MKDIR			= @$(GNU)mkdir -p
 
 #*******************************************************************************
 # Setup Dependencies
@@ -54,12 +59,14 @@ OBJS			:= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
 # Object file generations
 #*******************************************************************************
 $(OBJ_DIR)%.o: %.cpp
+| $(MKDIR) $(BUILD_DIR)
+| $(MKDIR) $(OBJ_DIR)
 | $(CCPP) -c $< -o $@
 
 #*******************************************************************************
 # Main Taget
 #*******************************************************************************
-main: $(OBJS)
+$(TARGET): $(OBJS)
 | $(CCPP) $(CPPFLAGS) $(OBJS) -o $(BUILD_DIR)$@ 
 
 .PHONY: debug
@@ -73,3 +80,9 @@ debug: $(MAKEFILE)
 | $(ECHO) Generated Files
 | $(ECHO) "OBJ_DIR: " $(OBJ_DIR)
 | $(ECHO) "OBJS: " $(OBJS)
+
+.PHONY: clean
+clean:
+| $(ECHO) Emptying Build Dir
+| $(RM)	$(BUILD_DIR)$(TARGET)
+| $(RM) $(OBJ_DIR)*
