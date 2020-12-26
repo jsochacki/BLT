@@ -22,4 +22,16 @@ Once you have one of these or a whole set of these just place these in the direc
   
 # Installation
 Installation is automatically done with the provided .sh script for ubuntu systems
-  
+
+
+# Building the Project
+
+The project can be built using the provided Makefile. Execute the command below
+to create the main executable.
+
+```bash
+make
+```
+
+The Makefile will compile all contents of the `src` folder into a single
+executable.
