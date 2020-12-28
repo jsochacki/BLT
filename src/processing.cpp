@@ -9,7 +9,7 @@
 #include "utils.hpp"
 
 void BLT::runCanny(const std::string srcDir, const std::string outDir, 
-        const int blurSize, const int thresold1, const int thresold2) {
+        const double blurSize, const double thresold1, const double thresold2) {
 
     // Generate all images to search through
     std::vector<std::string> imagePaths;

@@ -16,7 +16,10 @@ int main(int argc, char** argv) {
     const std::string commandlineKeys = 
         "{help h usage ?    |           |Print the help message           }"
         "{src s             |images/    |Source images to run detection on}"
-        "{out o             |out/       |Output image directory           }";
+        "{out o             |out/       |Output image directory           }"
+        "{threshold1 t1     |0.0        |First threshold for canny edge   }"
+        "{threshold2 t2     |3.0        |Second threshold for canny edge  }"
+        "{blurSize b        |3.0        |Blur size for canny edge         }";
     cv::CommandLineParser parser(argc, argv, commandlineKeys);
 
     // Check for help message
@@ -59,6 +62,10 @@ int main(int argc, char** argv) {
     }
 
     // Run canny edge on all images in source folder
-    BLT::runCanny(sourceDir, cannyOutputs);
+    const double blurSize = parser.get<double>("blurSize");
+    const double threshold1 = parser.get<double>("threshold1");
+    const double threshold2 = parser.get<double>("threshold2");
+    
+    BLT::runCanny(sourceDir, cannyOutputs, blurSize, threshold1, threshold2);
     return 0;
 }

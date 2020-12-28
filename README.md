@@ -35,3 +35,28 @@ make
 
 The Makefile will compile all contents of the `src` folder into a single
 executable.
+
+# Running the Application
+
+After building the application, the executable will be named `main` and will be
+in the root of the `build/` folder. Currently the executable can be used to run
+Canny Edge on all images located inside of a folder. Below is an example
+execution of the program.
+
+```bash
+./build/main --threshold1=0 --threshold2=4 --src=./images/ --out=./out/
+```
+
+The source folder needs to exist and contain images files, by default the
+`images/` folder in the root of the project folder will be used. The output
+folder does not need to exist and will be made if it does not exist. The
+two thresholds control the two thresholds of the Canny Edge detection. For
+more information, run the help command below.
+
+```bash
+./build/main --help
+```
+
+NOTE: Currently OpenCV filesystem tools do not process the `~` character in
+paths properly. Instead use absolute path in situations where the home
+directory is required.

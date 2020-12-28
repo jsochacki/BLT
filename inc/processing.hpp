@@ -25,6 +25,7 @@ namespace BLT {
      * @param threshold2 The second threshold for the hysteresis procedue.
      */
     void runCanny(const std::string srcDir, const std::string outDir,
-            const int blurSize=3, const int thresold1=0, const int thresold2=3);
+            const double blurSize=3, const double thresold1=0, 
+            const double thresold2=3);
 }
 #endif
