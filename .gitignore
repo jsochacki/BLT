@@ -1,6 +1,14 @@
 # Build files
 build/
 
+# Test files
+images/*.png
+images/*.jpeg
+images/*.JPEG
+
+# Output
+out/
+
 # ignore everything in the root except the "wp-content" directory.
 !wp-content/
 

@@ -13,7 +13,7 @@
 .DEFAULT_GOAL	= main
 
 # Baseline values which are added onto
-CPPFLAGS		=
+CPPFLAGS		= -ggdb --std=c++14
 INCLUDE			=
 
 # Output Directories
@@ -53,10 +53,10 @@ MKDIR			= @$(GNU)mkdir -p
 # Setup Dependencies
 #*******************************************************************************
 DEPS			= $(INC_DIRS)
-OBJS			:= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
+OBJS			+= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
 
 # Handle opencv linking
-CPPFLAGS		:= `pkg-config opencv4 --cflags --libs`
+CPPFLAGS		+= `pkg-config opencv4 --cflags --libs`
 
 #*******************************************************************************
 # Object file generations
