@@ -3,8 +3,8 @@
  * 
  * @author Collin Bolles
  */
-#ifndef _BLT_UTILS_H_
-#define _BLT_UTILS_H_
+#ifndef _BLT_UTILS_HPP_
+#define _BLT_UTILS_HPP_
 
 namespace BLT {
     /**

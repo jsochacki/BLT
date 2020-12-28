@@ -6,18 +6,9 @@
 #include <string>
 
 #include "utils.hpp"
+#include "processing.hpp"
 
 #define CANNY_EDGE_OUTPUT "canny/"
-
-/**
- * Handles running the Canny Edge detection on all images in the source
- * directory. Each image that has canny edge run on will be output into
- * the outputDir with the same name as the input image.
- *
- * @param sourceDir The source directory for images to run canny edge on
- * @param outputDir Directory to output canny edge images
- */
-void runCannyEdge(const std::string& sourceDir, const std::string& outputDir);
 
 int main(int argc, char** argv) {
     
@@ -68,44 +59,6 @@ int main(int argc, char** argv) {
     }
 
     // Run canny edge on all images in source folder
-    runCannyEdge(sourceDir, cannyOutputs);
+    BLT::runCanny(sourceDir, cannyOutputs);
     return 0;
-}
-
-
-void runCannyEdge(const std::string& sourceDir, const std::string& outputDir) {
-    // Generate all images to search through
-    std::vector<std::string> imagePaths;
-
-    // TODO: Improve globbing for supported image extensions
-    cv::utils::fs::glob(sourceDir, "*", imagePaths);
-    std::cout << "Files Found in " + sourceDir  + " " << +imagePaths.size() << std::endl;
-
-    cv::Mat original, greyscale, blur, edge;
-
-    for(std::string& imagePath: imagePaths) {
-        // Ignore gitkeep, not needed if better globbing used
-        if(imagePath.find(".gitkeep") != std::string::npos)
-            continue;
-
-        // Load original image
-        original = cv::imread(imagePath, cv::IMREAD_COLOR);
-
-        // Convert to greyscale and blur
-        cv::cvtColor(original, greyscale, cv::COLOR_BGR2GRAY);
-        cv::blur(greyscale, blur, cv::Size(3, 3));
-
-        // Run canny edge
-        cv::Canny(blur, edge, 0, 3);
-
-        // Parse out image name and get file to save image to
-        const std::string imageName = BLT::getFilename(imagePath);
-        const std::string output = cv::utils::fs::join(outputDir, imageName);
-        
-        // Write out result
-        cv::imwrite(output, edge);
-    }
-    
-
-
 }
