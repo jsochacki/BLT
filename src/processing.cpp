@@ -13,10 +13,8 @@ void BLT::runCanny(const std::string srcDir, const std::string outDir,
 
     // Generate all images to search through
     std::vector<std::string> imagePaths;
-
-    // TODO: Improve globbing to restrict to image files
-    cv::utils::fs::glob(srcDir, "*", imagePaths);
-    std::cout << "File Found: " << +imagePaths.size() << std::endl;
+    std::size_t foundImages = BLT::getImages(srcDir, imagePaths);
+    std::cout << "Images Found: " << +foundImages << std::endl;
 
     cv::Mat original, greyscale, blur, edge;
 
