@@ -55,19 +55,22 @@ MKDIR			= @$(GNU)mkdir -p
 DEPS			= $(INC_DIRS)
 OBJS			:= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
 
+# Handle opencv linking
+CPPFLAGS		:= `pkg-config opencv4 --cflags --libs`
+
 #*******************************************************************************
 # Object file generations
 #*******************************************************************************
 $(OBJ_DIR)%.o: %.cpp
 | $(MKDIR) $(BUILD_DIR)
 | $(MKDIR) $(OBJ_DIR)
-| $(CCPP) -c $< -o $@
+| $(CCPP) -c $< -o $@ $(CPPFLAGS)
 
 #*******************************************************************************
 # Main Taget
 #*******************************************************************************
 $(TARGET): $(OBJS)
-| $(CCPP) $(CPPFLAGS) $(OBJS) -o $(BUILD_DIR)$@ 
+| $(CCPP) $(OBJS) -o $(BUILD_DIR)$@ $(CPPFLAGS)
 
 .PHONY: debug
 debug: $(MAKEFILE)
