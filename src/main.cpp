@@ -3,8 +3,9 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/utils/filesystem.hpp>
-#include <filesystem>
 #include <string>
+
+#include "utils.hpp"
 
 #define CANNY_EDGE_OUTPUT "canny/"
 
@@ -98,9 +99,7 @@ void runCannyEdge(const std::string& sourceDir, const std::string& outputDir) {
         cv::Canny(blur, edge, 0, 3);
 
         // Parse out image name and get file to save image to
-        const std::string parent = cv::utils::fs::getParent(imagePath);
-        const std::size_t parentLength = parent.length();
-        const std::string imageName = imagePath.substr(parentLength + 1);
+        const std::string imageName = BLT::getFilename(imagePath);
         const std::string output = cv::utils::fs::join(outputDir, imageName);
         
         // Write out result

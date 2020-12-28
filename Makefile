@@ -34,12 +34,14 @@ INC_DIRS		= $(MAKEROOT)inc/
 FIND_CPP_FILES	= $(wildcard $(DIR)*.cpp)
 CPP_FILES		:= $(foreach DIR, $(SRC_DIRS), $(FIND_CPP_FILES))
 
+CPPFLAGS		+= -Iinc/
 #*******************************************************************************
 # Source Search Paths
 #*******************************************************************************
 # Set search paths
 vpath %.cpp $(SRC_DIRS)
 vpath %.c	$(SRC_DIRS)
+vpath %.hpp $(INC_DIRS)
 
 #*******************************************************************************
 # Set Compiler and Commands
