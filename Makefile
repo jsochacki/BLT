@@ -13,7 +13,7 @@
 .DEFAULT_GOAL	= main
 
 # Baseline values which are added onto
-CPPFLAGS		=
+CPPFLAGS		= -ggdb --std=c++14
 INCLUDE			=
 
 # Output Directories
@@ -34,12 +34,14 @@ INC_DIRS		= $(MAKEROOT)inc/
 FIND_CPP_FILES	= $(wildcard $(DIR)*.cpp)
 CPP_FILES		:= $(foreach DIR, $(SRC_DIRS), $(FIND_CPP_FILES))
 
+CPPFLAGS		+= -Iinc/
 #*******************************************************************************
 # Source Search Paths
 #*******************************************************************************
 # Set search paths
 vpath %.cpp $(SRC_DIRS)
 vpath %.c	$(SRC_DIRS)
+vpath %.hpp $(INC_DIRS)
 
 #*******************************************************************************
 # Set Compiler and Commands
@@ -53,7 +55,10 @@ MKDIR			= @$(GNU)mkdir -p
 # Setup Dependencies
 #*******************************************************************************
 DEPS			= $(INC_DIRS)
-OBJS			:= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
+OBJS			+= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
+
+# Handle opencv linking
+CPPFLAGS		+= `pkg-config opencv4 --cflags --libs`
 
 #*******************************************************************************
 # Object file generations
@@ -61,13 +66,13 @@ OBJS			:= $(patsubst %.cpp, $(OBJ_DIR)%.o, $(notdir $(CPP_FILES)))
 $(OBJ_DIR)%.o: %.cpp
 | $(MKDIR) $(BUILD_DIR)
 | $(MKDIR) $(OBJ_DIR)
-| $(CCPP) -c $< -o $@
+| $(CCPP) -c $< -o $@ $(CPPFLAGS)
 
 #*******************************************************************************
 # Main Taget
 #*******************************************************************************
 $(TARGET): $(OBJS)
-| $(CCPP) $(CPPFLAGS) $(OBJS) -o $(BUILD_DIR)$@ 
+| $(CCPP) $(OBJS) -o $(BUILD_DIR)$@ $(CPPFLAGS)
 
 .PHONY: debug
 debug: $(MAKEFILE)
