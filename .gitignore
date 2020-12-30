@@ -5,6 +5,7 @@ build/
 images/*.png
 images/*.jpeg
 images/*.JPEG
+images/*.JPG
 
 # Output
 out/
