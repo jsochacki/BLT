@@ -1,6 +1,10 @@
 # Build files
 build/
 
+# Dev files
+.fdignore
+compile_commands.json
+
 # Test files
 images/*.png
 images/*.jpeg
